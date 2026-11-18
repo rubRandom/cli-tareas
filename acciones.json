@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "acciones": [
+    {
+      "nombre": "clasificar-guiones",
+      "descripcion": "Mueve los guiones de Tirada de Datos (txt, md, docx) de Descargas a la carpeta de guiones",
+      "tipo": "mover",
+      "origen": "~/Downloads",
+      "filtro": { "extensiones": [".txt", ".md", ".docx"] },
+      "destino": "~/TiradaDeDatos/guiones"
+    },
+    {
+      "nombre": "clasificar-voces",
+      "descripcion": "Mueve las voces generadas con IA (mp3, wav) de Descargas a la carpeta de voces",
+      "tipo": "mover",
+      "origen": "~/Downloads",
+      "filtro": { "extensiones": [".mp3", ".wav"] },
+      "destino": "~/TiradaDeDatos/voces"
+    },
+    {
+      "nombre": "clasificar-imagenes",
+      "descripcion": "Mueve las imágenes para los vídeos (png, jpg, webp) de Descargas a la carpeta de imágenes",
+      "tipo": "mover",
+      "origen": "~/Downloads",
+      "filtro": { "extensiones": [".png", ".jpg", ".jpeg", ".webp"] },
+      "destino": "~/TiradaDeDatos/imagenes"
+    },
+    {
+      "nombre": "renombrar-renders",
+      "descripcion": "Renombra los vídeos renderizados con el prefijo del canal y su fecha: TDD_2026-11-18_001.mp4",
+      "tipo": "renombrar",
+      "origen": "~/TiradaDeDatos/renders",
+      "filtro": { "extensiones": [".mp4", ".mov"] },
+      "plantilla": "TDD_{fecha:%Y-%m-%d}_{n:03}{ext}"
+    },
+    {
+      "nombre": "archivar-renders",
+      "descripcion": "Copia los vídeos terminados al disco D: como copia de seguridad del canal",
+      "tipo": "copiar",
+      "origen": "~/TiradaDeDatos/renders",
+      "filtro": { "extensiones": [".mp4", ".mov"] },
+      "destino": "D:/TiradaDeDatos/archivo"
+    },
+    {
+      "nombre": "limpiar-renders-viejos",
+      "descripcion": "Borra los renders de más de 30 días (ya archivados en D:) para liberar espacio",
+      "tipo": "borrar",
+      "origen": "~/TiradaDeDatos/renders",
+      "filtro": { "extensiones": [".mp4", ".mov"], "mas_antiguo_que_dias": 30 },
+      "confirmar": true
+    }
+  ]
+}
